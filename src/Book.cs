@@ -2,6 +2,7 @@
 
 abrstract class Book
 {
+	//it's the book
 	string isbn;
 	string author;
 	string title;
