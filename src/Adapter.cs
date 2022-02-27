@@ -1,8 +1,21 @@
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
 
-public class Adapter : ITarget {
-    // The Adapter makes the Adaptee's interface compatible with the Target's
-    // interface.
-
+public class Adapter : PaymentManager, ITarget
+{
+    public override string GetAllPayments()
+    {
+        string returnXml = base.GetAllPayments();
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(returnXml);
+        return JsonConvert.SerializeObject(doc, Newtonsoft.Json.Formatting.Indented);
+    }
 }
 
+// The Adapter makes the Adaptee's interface compatible with the Target's
+// interface.
