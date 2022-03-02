@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\Model",
+    "\\src\\Model\\Builder"
   ],
-  "SelectedNode": "\\src\\NewFile",
   "PreviewInSolutionExplorer": false
 }

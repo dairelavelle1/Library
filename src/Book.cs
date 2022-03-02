@@ -1,50 +1,49 @@
 ﻿using System;
 
-namespace Library.src.Book
+namespace book
 {
-    class Book
+    public class Book
     {
-        private final string _category;
-        private final string _title;
-        private final string? _ISBN;
-        private final string? _ISSN;
-        private final string _publisher;
-        private final string _genre;
-        private final string _description;
+        private string _category;
+        private string _title;
+        private string _ISBN;
+        private string _ISSN;
+        private string _publisher;
+        private string _genre;
+        private string _description;
         //Some novels and many textbooks have multiple authors
-        private final string[] _authors;
-        private final string? _series;
+        private string[] _authors;
+        private string _series;
         //Textbooks and novels have editions and volumes, magazines have issues. I'm magazines
-        private final int? _edition;
-        private final int? _volume;
-        private final int? _issue;
-        private final DateTime _published;
-        private final DateTime? _editionPublished;
+        private int? _edition;
+        private int? _volume;
+        private int? _issue;
+        private DateTime _published;
+        private DateTime _editionPublished;
 
-        string Title { get => _title; set => _title = value; }
-        string ISBN { get => _ISBN; set => _ISBN = value; }
-        string ISSN { get => _ISSN; set => _ISSN = value; }
-        string Publisher { get => _publisher; set => _publisher = value; }
-        string Genre { get => _genre; set => _genre = value; }
-        string Category { get => _category; set => _category = value; }
-        string Description { get => _description; set => _description = value; }
-        string[] Authors { get => _authors; set => _authors = Array.Copy(value, _authors, value.Length); }
-        string Series { get => _series; set => _series = value; }
-        int Edition { get => _edition; set => _edition = value; }
-        int Volume { get => _volume; set => _volume = value; }
-        int IssueNumber { get => _issue; set => _issue = value; }
-        DateTime Published { get => _published; set => _published = value; }
-        DateTime EditionPublished { get => _editionPublished; set => _editionPublished = value; }
+        public string Title { get; set; }
+        public string ISBN { get; set; }
+        public string ISSN { get; set; }
+        public string Publisher { get; set; }
+        public string Genre { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
+        public string[] Authors { get => _authors; set { _authors = new string[value.Length]; Array.Copy(value, _authors, value.Length); } }
+        public string Series { get; set; }
+        public int? Edition { get; set; }
+        public int? Volume { get; set; }
+        public int? IssueNumber { get; set; }
+        public DateTime Published { get; set; }
+        public DateTime EditionPublished { get; set; }
 
         public override string ToString() {
-            switch (_category) {
-                case = "Novel":
-                        return String.Format("{0}\n{1}\n{2}", _title, _authors[0], _genre);
-                case = "Textbook":
-                        return String.Format("{0}\n{1}\n{2} edition", _title, _authors[0], _edition);
-                case = "Magazine":
-                        return String.Format("{0} issue {1}", _title, _issue);
-            }
+            if (_category.Equals("Novel")) {
+                return String.Format("{0}\n{1}\n{2}", _title, _authors[0], _genre);
+            } else if (_category.Equals("Textbook")) {
+                return String.Format("{0}\n{1}\n{2} edition", _title, _authors[0], _edition);
+            } else if (_category.Equals("Magazine")) {
+                return String.Format("{0} issue {1}", _title, _issue);
+            } else return String.Empty;
         }
     }
 }
