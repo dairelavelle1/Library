@@ -3,28 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Builder;
 
-namespace cmdInput {
+namespace Library{
     class Input {
 
-        static void Main(string[] args) {
+        static void Main(string[] args) { //Entry Point
             StartScreen();
         }
 
-        static void StartScreen() {
+        static void StartScreen() { 
             Console.WriteLine("Hello! Welcome to CS4227 Library!. For list of cmds, type 'help'");
             string input = Console.ReadLine();
             DefaultInputManager(input);
         }
 
-        static void Admin() {
-            Console.WriteLine("Welcome to Admin tools. to add new book to the system, type 'book'. To exit Admin tools, type 'exit'");
-            string input = Console.ReadLine();
-            AdminInputManager(input);
 
-        }
-
-        static void DefaultInputManager(string x) {
+        static void DefaultInputManager(string x) { //Normal user input (ie book checkouts) managed here
             switch (x) {
                 case "help":
                     Console.WriteLine("possible cmds: admin, help");
@@ -42,11 +37,18 @@ namespace cmdInput {
             }
         }
 
-        static void AdminInputManager(string x) {
+        static void Admin() 
+        {
+            Console.WriteLine("Welcome to Admin tools. to add new book to the system, type 'book'. To exit Admin tools, type 'exit'");
+            string input = Console.ReadLine();
+            AdminInputManager(input);
+
+        }
+
+        static void AdminInputManager(string x) { //Admin tasks (ie Scanning new books on to system ) is managed here
             switch (x) {
                 case "book":
-                    Console.WriteLine("To add book, type PLACEHOLDER");
-                    StartScreen();
+                    AddBook();
                     break;
 
                 case "exit":
@@ -58,6 +60,15 @@ namespace cmdInput {
                     Admin();
                     break;
             }
+        }
+
+        static void AddBook()
+        {
+            Director myDirector = new Director();
+            Console.WriteLine("Specify Book category :Magazine (M), Novel(N), Textbook(T)");
+            string category = Console.ReadLine();
+            NovelBookBuilder novelBookBuilder = new NovelBookBuilder();
+            myDirector.generateBook(novelBookBuilder, x);
         }
     }
 }
