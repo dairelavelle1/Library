@@ -94,7 +94,7 @@ namespace Library{
             }
         }
 
-        static string BuildMagazine()
+        static string BuildMagazine() //constructs the string, from user input, in the right format needed to pass through to generate magazine
         {
             string title, issueNum, publisher, genre, description, issue, date, x , returnMe;
             Console.WriteLine("Enter the Title of the Magazine");
@@ -119,8 +119,9 @@ namespace Library{
             x = Console.ReadLine();
             date = "DATE" + x + ";";
             returnMe = title + issueNum + publisher + genre + description + issue + date;
-
-            Console.WriteLine("is the following information correct? " + returnMe);
+           
+            BookCorrectInfoCheck(returnMe);
+            
             return returnMe;
         }
 
@@ -132,6 +133,29 @@ namespace Library{
         static string BuildTextbook()
         {
             return "placeholder";
+        }
+
+        static string BookCorrectInfoCheck(string x)
+        {
+            Console.WriteLine("is the following information correct? " + x);
+            Console.WriteLine("If this is correct type confirm to finalize, or retry to start again.");
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "confirm":
+                    return x;
+
+                case "retry":
+                    BuildMagazine();
+                    break;
+
+                default:
+                    Console.WriteLine("input not recognized");
+                    BookCorrectInfoCheck(x);
+                    break;
+            }
+            return x;
         }
     }
 }
