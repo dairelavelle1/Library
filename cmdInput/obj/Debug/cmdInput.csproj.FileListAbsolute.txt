@@ -1,0 +1,7 @@
+C:\Users\caoin\Source\Repos\Library\cmdInput\bin\Debug\cmdInput.exe.config
+C:\Users\caoin\Source\Repos\Library\cmdInput\bin\Debug\cmdInput.exe
+C:\Users\caoin\Source\Repos\Library\cmdInput\bin\Debug\cmdInput.pdb
+C:\Users\caoin\Source\Repos\Library\cmdInput\obj\Debug\cmdInput.csproj.AssemblyReference.cache
+C:\Users\caoin\Source\Repos\Library\cmdInput\obj\Debug\cmdInput.csproj.CoreCompileInputs.cache
+C:\Users\caoin\Source\Repos\Library\cmdInput\obj\Debug\cmdInput.exe
+C:\Users\caoin\Source\Repos\Library\cmdInput\obj\Debug\cmdInput.pdb
