@@ -13,35 +13,33 @@ namespace Builder {
             NovelBookBuilder novelBookBuilder = new NovelBookBuilder();
             TextbookBookBuilder textbookBookBuilder = new TextbookBookBuilder();
             MagazineBookBuilder magazineBookBuilder = new MagazineBookBuilder();
-            string[] harrypotter = {
-                "Novel",
-                "Harry Potter",
-                "9780747532743", 
-                "Bloomsbury",
-                "Fantasy",
-                "novel in the Harry Potter series and features Harry Potter",
-                "J. K. Rowling",
-                "2000FEB" };
-            string[] physics = {
-                "Textbook",
-                "Basic Physics",
-                "9780747532744",
-                "Penguin",
-                "Physics",
-                "Basic physics concepts for 1st year undergraduates",
-                "John Man", "Jan Woman", "endAuthors",
-                "2",
-                "2014DEC20",
-                "2015DEC20" };
-            string[] carMagazine = {
-                "Magazine",
-                "Cars Monthly",
-                "15802620",
-                "Toyota",
-                "Vehicles",
-                "It's all about cars",
-                "346",
-                "2022JAN" };
+            string harrypotter = 
+                "TITLE:Harry Potter;"+
+                "ISBN:9780747532743;"+ 
+                "PUBLISHER:Bloomsbury;"+
+                "GENRE:Fantasy;"+
+                "DESCRIPTION:novel in the Harry Potter series and features Harry Potter;"+
+                "AUTHOR:J. K. Rowling;"+
+                "DATE:2000FEB";
+            string physics = 
+                "TITLE:Textbook;"+
+                "TITLE:Basic Physics;"+
+                "ISBN:9780747532744;"+
+                "PUBLISHER:Penguin;"+
+                "GENRE:Physics;"+
+                "DESCRIPTION:Basic physics concepts for 1st year undergraduates;"+
+                "AUTHOR:John Man;AUTHOR:Jan Woman;"+
+                "EDITION:2;"+
+                "DATE:2014DEC20;"+
+                "DATE:2015DEC20";
+            string carMagazine = 
+                "TITLE:Cars Monthly;"+
+                "ISSN:15802620;"+
+                "PUBLISHER:Toyota;"+
+                "GENRE:Vehicles;"+
+                "DESCRIPTION:It's all about cars;"+
+                "ISSUE:346;"+
+                "DATE:2022JAN";
             myDirector.generateBook(novelBookBuilder, harrypotter);
             myDirector.generateBook(textbookBookBuilder, physics);
             myDirector.generateBook(magazineBookBuilder, carMagazine);
