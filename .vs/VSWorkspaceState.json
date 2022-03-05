@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\Model",
+    "\\src\\Model\\Builder"
   ],
-  "SelectedNode": "\\C:\\Users\\Daire\\Source\\Repos\\Library",
   "PreviewInSolutionExplorer": false
 }
