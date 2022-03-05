@@ -65,10 +65,73 @@ namespace Library{
         static void AddBook()
         {
             Director myDirector = new Director();
-            Console.WriteLine("Specify Book category :Magazine (M), Novel(N), Textbook(T)");
+            Console.WriteLine("Specify Book category :Magazine (m), Novel(n), Textbook(t)");
             string category = Console.ReadLine();
-            NovelBookBuilder novelBookBuilder = new NovelBookBuilder();
-            myDirector.generateBook(novelBookBuilder, x);
+            switch (category)
+            {
+                case "m":
+                    MagazineBookBuilder magazineBookBuilder = new MagazineBookBuilder();
+                    string x = BuildMagazine();
+                    myDirector.generateBook(magazineBookBuilder, x);
+                    break;
+
+                case "n":
+                    NovelBookBuilder novelBookBuilder = new NovelBookBuilder();
+                    string y = BuildNovel();
+                    myDirector.generateBook(novelBookBuilder, y);
+                    break;
+
+                case "t":
+                    TextbookBookBuilder textbookBookBuilder = new TextbookBookBuilder();
+                    string z = BuildTextbook();
+                    myDirector.generateBook(textbookBookBuilder, z);
+                    break;
+
+                default:
+                    Console.WriteLine("input not recognized");
+                    AddBook();
+                    break;
+            }
+        }
+
+        static string BuildMagazine()
+        {
+            string title, issueNum, publisher, genre, description, issue, date, x , returnMe;
+            Console.WriteLine("Enter the Title of the Magazine");
+            x = Console.ReadLine();
+            title = "TITLE:" + x + ";";
+            Console.WriteLine("Enter the IssueNumber of the Magazine");
+            x = Console.ReadLine();
+            issueNum = "ISSN:" + x + ";";
+            Console.WriteLine("Enter the Publisher of the Magazine");
+            x = Console.ReadLine();
+            publisher = "PUBLISHER:" + x + ";";
+            Console.WriteLine("Enter the Genre of the Magazine");
+            x = Console.ReadLine();
+            genre = "GENRE:" + x + ";";
+            Console.WriteLine("Enter the description of the Magazine");
+            x = Console.ReadLine();
+            description = "DESCRIPTION:" + x +";";
+            Console.WriteLine("Enter the Issue of the Magazine");
+            x = Console.ReadLine();
+            issue = "ISSUE:" + x + ";";
+            Console.WriteLine("Enter the Date of the Magazine");
+            x = Console.ReadLine();
+            date = "DATE" + x + ";";
+            returnMe = title + issueNum + publisher + genre + description + issue + date;
+
+            Console.WriteLine("is the following information correct? " + returnMe);
+            return returnMe;
+        }
+
+        static string BuildNovel()
+        {
+            return "placeholder";
+        }
+
+        static string BuildTextbook()
+        {
+            return "placeholder";
         }
     }
 }
