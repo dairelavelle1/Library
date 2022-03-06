@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -117,11 +118,12 @@ namespace Library{
             issue = "ISSUE:" + x + ";";
             Console.WriteLine("Enter the Date of the Magazine");
             x = Console.ReadLine();
-            date = "DATE" + x + ";";
+            date = "DATE:" + x;
             returnMe = title + issueNum + publisher + genre + description + issue + date;
+
+
            
             BookCorrectInfoCheck(returnMe);
-            
             return returnMe;
         }
 
