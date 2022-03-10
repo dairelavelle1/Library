@@ -19,7 +19,13 @@ namespace book {
         public int? Edition { get => _edition; set => _edition = value; }
         public int? Volume { get => _volume; set => _volume = value; }
         public string Series { get => _series; set => _series = value; }
+        public override string GetID() {
+            string output = _ISBN;
+            if (!(_volume == null)) { output += "_" + _volume; }
+            if (!(_edition == null)) { output += "_" + _edition; }
+            return (output);
+        }
 
-        public Novel() { _authors = new List<string>(); }
+        public Novel() { _authors = new List<string>(); Category = "NOVEL"; }
     }
 }

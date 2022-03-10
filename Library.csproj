@@ -85,11 +85,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatalogTestHarness.cs" />
     <Compile Include="DataFiles\Book.cs" />
     <None Include="Model\Builder\BuilderTestHarness.cs" />
+    <Compile Include="DataFiles\Catalog.cs" />
     <Compile Include="Model\Director.cs" />
     <Compile Include="Model\Builder\IBookBuilder.cs" />
-    <Compile Include="Input.cs" />
+    <None Include="Input.cs" />
     <Compile Include="DataFiles\Magazine.cs" />
     <Compile Include="Model\Builder\MagazineBookBuilder.cs" />
     <Compile Include="DataFiles\Novel.cs" />

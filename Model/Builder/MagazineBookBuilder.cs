@@ -6,7 +6,7 @@ using book;
 namespace Builder {
 	public class MagazineBookBuilder : IBookBuilder {
 		private Magazine _book = new Magazine();
-		public Book Book { get { return _book; } }
+		public override Book Book { get { return _book; } }
  
 		protected override void AddCategory() { _book.Category = "Magazine"; }
 		protected override void AddTitle(string title) { _book.Title = title; }
@@ -16,6 +16,7 @@ namespace Builder {
 		protected override void AddDescription(string description) { _book.Description = description; }
 		protected override void AddIssue(string issue) { _book.IssueNumber = Int32.Parse(issue); }
 		protected override void AddPublished(DateTime published) { _book.Published.Add(published); }
+		public override void Reset() { _book = new Magazine(); }
 
 		//This method is for textbooks being added by a user
 		//The string format is:
@@ -38,20 +39,22 @@ namespace Builder {
 
 		//	return this._book;
 		//}
-		public override Book buildBook(string arr) {
+		public override Book BuildBook(string arr) {
 			AddCategory();
 			string[] fields = arr.Split(';');
 			foreach (string field in fields) {
-				string fieldIdentifier = field.Split(':')[0];
-				string fieldValue = field.Split(':')[1];
-				switch (fieldIdentifier) {
-					case "TITLE": AddTitle(fieldValue); break;
-					case "ISSN": AddISSN(fieldValue); break;
-					case "PUBLISHER": AddPublisher(fieldValue); break;
-					case "GENRE": AddGenre(fieldValue); break;
-					case "DESCRIPTION": AddDescription(fieldValue); break;
-					case "ISSUE": AddDescription(fieldValue); break;
-					case "DATE": AddPublished(DateTime.Parse(fieldValue)); break;
+				if (!(field == "")) {
+					string fieldIdentifier = field.Split(':')[0];
+					string fieldValue = field.Split(':')[1];
+					switch (fieldIdentifier) {
+						case "TITLE": AddTitle(fieldValue); break;
+						case "ISSN": AddISSN(fieldValue); break;
+						case "PUBLISHER": AddPublisher(fieldValue); break;
+						case "GENRE": AddGenre(fieldValue); break;
+						case "DESCRIPTION": AddDescription(fieldValue); break;
+						case "ISSUE": AddDescription(fieldValue); break;
+						case "DATE": AddPublished(DateTime.Parse(fieldValue)); break;
+					}
 				}
 			}
 			return this._book;

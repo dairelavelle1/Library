@@ -17,16 +17,22 @@ namespace book {
         public void AddAuthor(string author) { _authors.Add(author); }
         public int Edition { get => _edition; set => _edition = value; }
         public int? Volume { get => _volume; set => _volume = value; }
-
-        public Textbook() { _authors = new List<string>(); }
-
-        public override string ToString() {
-            string output = String.Format("{0}, {1} edition\tby {2}", Title, Edition, Authors.ElementAt(0));
-            if (Authors.Count > 1) {
-                for (int i = 1; i < Authors.Count; i++) { output += ", " + Authors.ElementAt(i); }
-            }
-            output += "\t" + Published.ElementAt(Published.Count-1).Year;
-            return output;
+        public override string GetID() {
+            string output = _ISBN;
+            if (!(_volume == null)) { output += "_" + _volume; }
+            output += "_" + _edition;
+            return (output);
         }
+
+        public Textbook() { _authors = new List<string>(); Category = "TEXTBOOK"; }
+
+        //public override string ToString() {
+        //    string output = String.Format("{0}, {1} edition\tby {2}", Title, Edition, Authors.ElementAt(0));
+        //    if (Authors.Count > 1) {
+        //        for (int i = 1; i < Authors.Count; i++) { output += ", " + Authors.ElementAt(i); }
+        //    }
+        //    output += "\t" + Published.ElementAt(Published.Count-1).Year;
+        //    return output;
+        //}
     }
 }

@@ -9,7 +9,11 @@ namespace book {
         private string _ISSN;
         private int _issue;
 
+        public Magazine() { Category = "MAGAZINE"; }
         public string ISSN { get => _ISSN; set => _ISSN = value; }
         public int IssueNumber { get => _issue; set => _issue = value; }
+        public override string GetID() {
+            return ISSN + "_" + IssueNumber;
+        }
     }
 }

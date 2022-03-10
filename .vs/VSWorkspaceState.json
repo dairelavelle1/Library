@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cmdInput",
-    "\\src",
-    "\\src\\DataFiles",
-    "\\src\\Model",
-    "\\src\\Model\\Builder"
+    "\\Model",
+    "\\Model\\Adapter",
+    "\\Model\\Builder"
   ],
+  "SelectedNode": "\\Model\\Builder\\BuilderTestHarness.cs",
   "PreviewInSolutionExplorer": false
 }
