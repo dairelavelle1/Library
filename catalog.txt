@@ -1,0 +1,3 @@
+NOVEL_TITLE:Harry Potter;AUTHOR:J.K.Rowling;ISBN:9780747532743;GENRE:Fantasy;PUBLISHER:Bloomsbury;DESCRIPTION:novel in the Harry Potter series and features Harry Potter;
+TEXTBOOK_TITLE:Basic Physics;AUTHOR:JohnMan;AUTHOR:JanWoman;ISBN:9780747532744;EDITION:2;GENRE:Physics;PUBLISHER:Penguin;DESCRIPTION:Basic physics concepts for 1st year undergraduates;
+MAGAZINE_TITLE:Cars Monthly;ISSN:15802620;ISSUE:0;GENRE:Vehicles;PUBLISHER:Toyota;DESCRIPTION:346;

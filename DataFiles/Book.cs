@@ -19,11 +19,13 @@ namespace book
         public string Description { get => _description ; set => _description = value; }
         public List<DateTime> Published { get => _published ; set => _published = new List<DateTime>(value); }
         public void AddPublished(DateTime published) { _published.Add(published); }
-
+        public virtual string GetID() { return _title; }
         public Book() { _published = new List<DateTime>(); }
 
         public override string ToString() {
             return Title;
         }
+
+        public virtual string Writeable() { return Title; }
     }
 }

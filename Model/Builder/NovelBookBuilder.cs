@@ -8,7 +8,7 @@ namespace Builder {
 
 	public class NovelBookBuilder : IBookBuilder {
 		private Novel _book = new Novel();
-		public Book Book { get { return _book; } }
+		public override Book Book { get { return _book; } }
 
 		protected override void AddCategory() { _book.Category = "Novel"; }
 		protected override void AddTitle(string title) { _book.Title = title; }
@@ -20,6 +20,7 @@ namespace Builder {
 		protected override void AddSeries(string series) { _book.Series = series; }
 		protected override void AddEdition(string edition) { _book.Edition = Int32.Parse(edition); }
 		protected override void AddPublished(DateTime published) { _book.Published.Add(published); }
+		public override void Reset() { _book = new Novel(); }
 
 		//This method is for novels being added by a user
 		//The string format is:
@@ -42,23 +43,26 @@ namespace Builder {
 		//	return this._book;
 		//}
 
-		public override Book buildBook(string arr) {
+		public override Book BuildBook(string arr) {
 			AddCategory();
 			string[] fields = arr.Split(';');
 			foreach (string field in fields) {
-				string fieldIdentifier = field.Split(':')[0];
-				string fieldValue = field.Split(':')[1];
-				switch (fieldIdentifier) {
-					case "AUTHOR":		AddAuthor(fieldValue); break;
-					case "TITLE":		AddTitle(fieldValue); break;
-					case "ISBN":		AddISBN(fieldValue); break;
-					case "PUBLISHER":	AddPublisher(fieldValue); break;
-					case "GENRE":		AddGenre(fieldValue); break;
-					case "DESCRIPTION": AddDescription(fieldValue); break;
-					case "EDITION":		AddEdition(fieldValue); break;
-					case "DATE":		AddPublished(DateTime.Parse(fieldValue)); break;
-					case "SERIES":		AddSeries(fieldValue); break;
-					case "VOLUME":		AddVolume(fieldValue); break;
+				if (!(field == "")) { 
+					string fieldIdentifier = field.Split(':')[0];
+					string fieldValue = field.Split(':')[1];
+					switch (fieldIdentifier) {
+						case "AUTHOR": AddAuthor(fieldValue); break;
+						case "TITLE": AddTitle(fieldValue); break;
+						case "ISBN": AddISBN(fieldValue); break;
+						case "PUBLISHER": AddPublisher(fieldValue); break;
+						case "GENRE": AddGenre(fieldValue); break;
+						case "DESCRIPTION": AddDescription(fieldValue); break;
+						case "EDITION": AddEdition(fieldValue); break;
+						case "DATE": AddPublished(DateTime.Parse(fieldValue)); break;
+						case "SERIES": AddSeries(fieldValue); break;
+						case "VOLUME": AddVolume(fieldValue); break;
+						default: break;
+					}
 				}
 			}
 			return this._book;

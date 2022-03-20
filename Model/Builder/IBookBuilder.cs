@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Builder {
     public abstract class IBookBuilder {
+        public abstract Book Book { get; }
         protected abstract void AddCategory();
         protected abstract void AddTitle(string title);
         protected abstract void AddISBN(string isbn);
@@ -18,6 +19,7 @@ namespace Builder {
         protected abstract void AddIssue(string issue);
         protected abstract void AddPublished(DateTime published);
         //public abstract Book buildBook(string[] arr);
-        public abstract Book buildBook(string arr);
+        public abstract Book BuildBook(string arr);
+        public abstract void Reset();
     }
 }
