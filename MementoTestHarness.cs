@@ -1,22 +1,24 @@
-﻿using Builder;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using memento;
 using book;
+using Builder;
+using System.IO;
 using System.Diagnostics;
 
 namespace Library {
-    internal class CatalogTestHarness {
+    class MementoTestHarness {
         public static void Main(string[] args) {
             Catalog myCatalog = new Catalog();
             Director myDirector = new Director();
             NovelBookBuilder novelBookBuilder = new NovelBookBuilder();
             TextbookBookBuilder textbookBookBuilder = new TextbookBookBuilder();
             MagazineBookBuilder magazineBookBuilder = new MagazineBookBuilder();
-            List<IBookBuilder> bookBuilderList = new List<IBookBuilder>() { novelBookBuilder,magazineBookBuilder,textbookBookBuilder};
+            List<IBookBuilder> bookBuilderList = new List<IBookBuilder>() { novelBookBuilder, magazineBookBuilder, textbookBookBuilder };
+            Caretaker myCaretaker = new Caretaker(myCatalog);
             string fileName = @"..\..\catalog.txt";
             var path = Path.Combine(Directory.GetCurrentDirectory(), fileName);
             string[] lines = File.ReadAllLines(path);
@@ -29,10 +31,14 @@ namespace Library {
                     }
                 }
             }
-            myDirector.generateBook(novelBookBuilder, "TITLE:The Grapes of Wrath;AUTHOR:John Steinbeck;ISBN:9780141185064;PUBLISHER:Penguin;PUBLISHED:1939;PUBLISHED:2000;EDITION:4;DESCRIPTION:The Joad family are forced to travel west in search of the promised land;") ;
+            myCaretaker.Backup();
+            myDirector.generateBook(novelBookBuilder, "TITLE:The Grapes of Wrath;AUTHOR:John Steinbeck;ISBN:9780141185064;PUBLISHER:Penguin;PUBLISHED:1939;PUBLISHED:2000;EDITION:4;DESCRIPTION:The Joad family are forced to travel west in search of the promised land;");
             myCatalog.Add(novelBookBuilder.Book);
             novelBookBuilder.Reset();
-            File.WriteAllLines(fileName, myCatalog.Write());
+            myCaretaker.Backup();
+            Debug.WriteLine(myCaretaker.ShowHistory());
+            myCaretaker.Restore();
+            Debug.WriteLine("\n\n"+myCaretaker.ShowHistory());
         }
     }
 }

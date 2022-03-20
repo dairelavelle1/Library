@@ -25,5 +25,7 @@ namespace book
         public override string ToString() {
             return Title;
         }
+
+        public virtual string Writeable() { return Title; }
     }
 }

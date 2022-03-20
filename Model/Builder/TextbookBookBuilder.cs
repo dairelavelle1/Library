@@ -44,6 +44,8 @@ namespace Builder {
 						case "DESCRIPTION": AddDescription(fieldValue); break;
 						case "EDITION": AddEdition(fieldValue); break;
 						case "DATE": AddPublished(DateTime.Parse(fieldValue)); break;
+						case "VOLUME": AddVolume(fieldValue); break;
+						default: break;
 					}
 				}
 			}

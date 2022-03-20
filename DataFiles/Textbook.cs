@@ -26,13 +26,17 @@ namespace book {
 
         public Textbook() { _authors = new List<string>(); Category = "TEXTBOOK"; }
 
-        //public override string ToString() {
-        //    string output = String.Format("{0}, {1} edition\tby {2}", Title, Edition, Authors.ElementAt(0));
-        //    if (Authors.Count > 1) {
-        //        for (int i = 1; i < Authors.Count; i++) { output += ", " + Authors.ElementAt(i); }
-        //    }
-        //    output += "\t" + Published.ElementAt(Published.Count-1).Year;
-        //    return output;
-        //}
+        public override string Writeable() {
+            string output = "TEXTBOOK_";
+            output += "TITLE:" + Title + ";";
+            foreach (var author in Authors) { output += "AUTHOR:" + author + ";"; }
+            output += "ISBN:" + ISBN + ";";
+            output += "EDITION:" + Edition + ";";
+            output += "GENRE:" + Genre + ";";
+            output += "PUBLISHER:" + Publisher + ";";
+            output += "DESCRIPTION:" + Description + ";";
+            foreach (var date in Published) { output += "PUBLISHED:" + date.ToString() + ";"; }
+            return output;
+        }
     }
 }

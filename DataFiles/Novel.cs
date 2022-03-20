@@ -27,5 +27,19 @@ namespace book {
         }
 
         public Novel() { _authors = new List<string>(); Category = "NOVEL"; }
+
+        public override string Writeable() {
+            string output = "NOVEL_";
+            output += "TITLE:" + Title + ";";
+            foreach (var author in Authors) { output += "AUTHOR:" + author + ";"; }
+            output += "ISBN:" + ISBN + ";";
+            if (Edition != null) { output += "EDITION:" + Edition + ";"; }
+            if(Volume!=null) { output+="VOLUME:"+Volume + ";"; }
+            output += "GENRE:" + Genre + ";";
+            output += "PUBLISHER:" + Publisher + ";";
+            output += "DESCRIPTION:" + Description + ";";
+            foreach (var date in Published) { output += "PUBLISHED:" + date.ToString() + ";"; }
+            return output;
+        }
     }
 }
