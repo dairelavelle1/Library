@@ -85,6 +85,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\BuildMagazineCommand.cs" />
+    <Compile Include="Command\BuildNovelCommand.cs" />
+    <Compile Include="Command\BuildTextBookCommand.cs" />
+    <Compile Include="Command\TestCommand.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\Invoker.cs" />
     <Compile Include="DataFiles\Book.cs" />
     <None Include="Model\Builder\BuilderTestHarness.cs" />
     <Compile Include="Model\Director.cs" />
@@ -97,6 +103,7 @@
     <Compile Include="DataFiles\Textbook.cs" />
     <Compile Include="Model\Builder\TextbookBookBuilder.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />

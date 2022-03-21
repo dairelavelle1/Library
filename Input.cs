@@ -10,6 +10,9 @@ namespace Library{
     class Input {
 
         static void Main(string[] args) { //Entry Point
+            Invoker invoker = new Invoker();
+            invoker.SetNormalUser(new TestCommand("Say Hi!"));
+            invoker.Invoke();
             StartScreen();
         }
 
@@ -65,27 +68,28 @@ namespace Library{
 
         static void AddBook()
         {
+            Invoker invoker = new Invoker();
             Director myDirector = new Director();
             Console.WriteLine("Specify Book category :Magazine (m), Novel(n), Textbook(t)");
             string category = Console.ReadLine();
             switch (category)
             {
                 case "m":
-                    MagazineBookBuilder magazineBookBuilder = new MagazineBookBuilder();
-                    string x = BuildMagazine();
-                    myDirector.generateBook(magazineBookBuilder, x);
+                    string x = MagazineString();
+                    invoker.SetBuildMagazine(new BuildMagazineCommand(x));
+                    invoker.Invoke();
                     break;
 
                 case "n":
-                    NovelBookBuilder novelBookBuilder = new NovelBookBuilder();
                     string y = BuildNovel();
-                    myDirector.generateBook(novelBookBuilder, y);
+                    invoker.SetBuildNovel(new BuildNovelCommand(y));
+                    invoker.Invoke();
                     break;
 
                 case "t":
+                    string z = TextbookString();
                     TextbookBookBuilder textbookBookBuilder = new TextbookBookBuilder();
-                    string z = BuildTextbook();
-                    myDirector.generateBook(textbookBookBuilder, z);
+                    invoker.SetBuildTextBook(new BuildTextBookCommand(z));
                     break;
 
                 default:
@@ -95,7 +99,7 @@ namespace Library{
             }
         }
 
-        static string BuildMagazine() //constructs the string, from user input, in the right format needed to pass through to generate magazine
+        static string MagazineString() //constructs the string, from user input, in the right format needed to pass through to generate magazine
         {
             string title, issueNum, publisher, genre, description, issue, date, x , returnMe;
             Console.WriteLine("Enter the Title of the Magazine");
@@ -121,8 +125,6 @@ namespace Library{
             date = "DATE:" + x;
             returnMe = title + issueNum + publisher + genre + description + issue + date;
 
-
-           
             BookCorrectInfoCheck(returnMe);
             return returnMe;
         }
@@ -132,7 +134,7 @@ namespace Library{
             return "placeholder";
         }
 
-        static string BuildTextbook()
+        static string TextbookString()
         {
             return "placeholder";
         }
@@ -149,7 +151,7 @@ namespace Library{
                     return x;
 
                 case "retry":
-                    BuildMagazine();
+                    MagazineString();
                     break;
 
                 default:
