@@ -4,10 +4,11 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using book;
+using memento;
 
 namespace Builder {
 
-	public class TextbookBookBuilder : IBookBuilder {
+	public class TextbookBookBuilder : IBookBuilder, IOriginator {
 		private Textbook _book = new Textbook();
 		public override Book Book { get { return _book; } }
 
@@ -67,5 +68,13 @@ namespace Builder {
         protected override void AddIssue(string issue) {
             throw new NotImplementedException();
         }
-    }
+		public IMemento SaveState() {
+			return new BookBuilderMemento(Book);
+		}
+
+		public void RestoreState(IMemento memento) {
+			BookBuilderMemento newItems = (BookBuilderMemento)memento;
+			this._book = (Textbook)newItems.GetState();
+		}
+	}
 }

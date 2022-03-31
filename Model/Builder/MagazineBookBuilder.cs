@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using book;
+using memento;
 
 namespace Builder {
-	public class MagazineBookBuilder : IBookBuilder {
+	public class MagazineBookBuilder : IBookBuilder, IOriginator {
 		private Magazine _book = new Magazine();
 		public override Book Book { get { return _book; } }
  
@@ -24,21 +25,6 @@ namespace Builder {
 		//it is unordered. Adding additional dates of publication will add to a list
 		//Adding additional to any other field will overwrite with the latest
 
-
-		//public override Book buildBook(string[] arr) {
-		//	AddCategory();
-		//	List<DateTime> list = new List<DateTime>();
-		//	int count = 1;
-		//	AddTitle(arr[count++]);
-		//	AddISSN(arr[count++]);
-		//	AddPublisher(arr[count++]);
-		//	AddGenre(arr[count++]);
-		//	AddDescription(arr[count++]);
-		//	AddIssue(arr[count++]);
-		//	AddPublished(DateTime.Parse(arr[count++]));
-
-		//	return this._book;
-		//}
 		public override Book BuildBook(string arr) {
 			AddCategory();
 			string[] fields = arr.Split(';');
@@ -79,5 +65,14 @@ namespace Builder {
         protected override void AddVolume(string volume) {
             throw new NotImplementedException();
         }
-    }
+
+		public IMemento SaveState() {
+			return new BookBuilderMemento(Book);
+		}
+
+		public void RestoreState(IMemento memento) {
+			BookBuilderMemento newItems = (BookBuilderMemento)memento;
+			this._book = (Magazine) newItems.GetState();
+		}
+	}
 }

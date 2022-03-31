@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Json;
 using book;
+using memento;
 
 namespace Builder {
 
-	public class NovelBookBuilder : IBookBuilder {
+	public class NovelBookBuilder : IBookBuilder, IOriginator {
 		private Novel _book = new Novel();
 		public override Book Book { get { return _book; } }
 
@@ -27,21 +28,6 @@ namespace Builder {
 		//"AUTHOR:author name;TITLE:book title;ISBN:book's ISBN"
 		//it is unordered. Adding additional dates of publication or authors will add to a list
 		//Adding additional to any other field will overwrite with the latest
-
-		//public override Book buildBook(string[] arr) {
-		//	List<string> list = new List<string>();
-		//	AddCategory();
-		//	int count = 1;
-		//	AddTitle(arr[count++]);
-		//	AddISBN(arr[count++]);
-		//	AddPublisher(arr[count++]);
-		//	AddGenre(arr[count++]);
-		//	AddDescription(arr[count++]);
-		//	AddAuthor(arr[count++]);
-		//	AddPublished(DateTime.Parse(arr[count]));
-
-		//	return this._book;
-		//}
 
 		public override Book BuildBook(string arr) {
 			AddCategory();
@@ -78,5 +64,13 @@ namespace Builder {
         protected override void AddIssue(string issue) {
             throw new NotImplementedException();
         }
-    }
+		public IMemento SaveState() {
+			return new BookBuilderMemento(Book);
+		}
+
+		public void RestoreState(IMemento memento) {
+			BookBuilderMemento newItems = (BookBuilderMemento)memento;
+			this._book = (Novel)newItems.GetState();
+		}
+	}
 }

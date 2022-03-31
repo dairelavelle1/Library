@@ -86,16 +86,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CatalogTestHarness.cs" />
-    <Compile Include="MementoTestHarness.cs" />
+    <None Include="MementoTestHarness.cs" />
     <Compile Include="DataFiles\Book.cs" />
+    <Compile Include="Model\Adapter\Adaptee.cs" />
+    <Compile Include="Model\Adapter\Adapter.cs" />
+    <Compile Include="Model\Adapter\ITarget.cs" />
+    <Compile Include="Model\Memento\BookBuilderMemento.cs" />
     <Compile Include="Model\Memento\Caretaker.cs" />
     <Compile Include="Model\Memento\IMemento.cs" />
-    <Compile Include="Model\Memento\Memento.cs" />
+    <Compile Include="Model\Memento\IOriginator.cs" />
+    <Compile Include="Model\Memento\CatalogMemento.cs" />
     <None Include="Model\Builder\BuilderTestHarness.cs" />
     <Compile Include="DataFiles\Catalog.cs" />
     <Compile Include="Model\Director.cs" />
     <Compile Include="Model\Builder\IBookBuilder.cs" />
-    <None Include="Input.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="DataFiles\Magazine.cs" />
     <Compile Include="Model\Builder\MagazineBookBuilder.cs" />
     <Compile Include="DataFiles\Novel.cs" />
