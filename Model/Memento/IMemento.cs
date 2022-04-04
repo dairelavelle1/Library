@@ -7,10 +7,11 @@ using book;
 
 namespace memento {
     public abstract class IMemento {
-
-        public abstract List<Book> GetState();
-        public abstract DateTime GetDate();
-
-        public abstract string GetName();
+        /*
+         * children of this class are expected to:
+         * store state
+         * return state
+         * override String.ToString()
+         */
     }
 }

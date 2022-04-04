@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using memento;
 
 namespace book {
-    public class Catalog {
+    public class Catalog : IOriginator{
         List<Book> _items;
 
         public List<Book> Items { get => _items; set => _items = value; }
@@ -50,11 +50,12 @@ namespace book {
         }
 
         public IMemento SaveState() {
-            return new Memento(Items);
+            return new CatalogMemento(Items);
         }
 
         public void RestoreState(IMemento memento) {
-            Items = memento.GetState();
+            CatalogMemento newItems = (CatalogMemento)memento;
+            Items = newItems.GetState();
         }
     }
 }

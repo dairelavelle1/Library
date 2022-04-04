@@ -8,10 +8,10 @@ using book;
 namespace memento {
     public class Caretaker {
         private List<IMemento> _mementos = new List<IMemento>();
-        private Catalog _originator;
+        private IOriginator _originator;
 
-        public Caretaker(Catalog catalog) {
-            _originator = catalog;
+        public Caretaker(IOriginator caretakee) {
+            _originator = caretakee;
         }
 
         public void Backup() {
@@ -27,7 +27,7 @@ namespace memento {
         public string ShowHistory() {
             string output = "";
             foreach (var memento in this._mementos) {
-                output += "Catalog at: "+memento.GetName()+" "+memento.GetState().Count+"\n";
+                output += memento+"\n";
             }
             return output;
         }
