@@ -6,13 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-public class Adapter : PaymentManager, ITarget
+namespace AdapterPattern.Adapter
 {
-    public override string GetAllPayments()
+    public class PaymentAdapter : PaymentManager, ITarget
     {
-        string returnXml = base.GetAllPayments();
-        XmlDocument doc = new XmlDocument();
-        doc.LoadXml(returnXml);
-        return JsonConvert.SerializeObject(doc, Newtonsoft.Json.Formatting.Indented);
+        public override string GetAllPayments()
+        {
+            string returnXml = base.GetAllPayments();
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(returnXml);
+            return JsonConvert.SerializeObject(doc, Newtonsoft.Json.Formatting.Indented);
+        }
     }
 }
