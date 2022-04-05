@@ -1,0 +1,27 @@
+{
+  "ArrayOfPayment": {
+    "Payment": [
+      {
+        "CustomerName": "Nathan Quirke",
+        "CreditCardNo": "4319748529059287",
+        "CardExpMonth": "10",
+        "CardExpYear": "24",
+        "CardCVV": "683"
+      },
+      {
+        "CustomerName": "Sarah Smith",
+        "CreditCardNo": "4319907383726105",
+        "CardExpMonth": "9",
+        "CardExpYear": "22",
+        "CardCVV": "346"
+      },
+      {
+        "CustomerName": "John Doe",
+        "CreditCardNo": "4319928503782658",
+        "CardExpMonth": "3",
+        "CardExpYear": "23",
+        "CardCVV": "811"
+      }
+    ]
+  }
+}

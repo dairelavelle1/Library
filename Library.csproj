@@ -87,6 +87,7 @@
   <ItemGroup>
     <None Include="CatalogTestHarness.cs" />
     <None Include="MementoTestHarness.cs" />
+	<Compile Include="AdapterTestHarness.cs" />
     <Compile Include="DataFiles\Book.cs" />
     <Compile Include="Model\Adapter\Adaptee.cs" />
     <Compile Include="Model\Adapter\Adapter.cs" />
@@ -100,7 +101,7 @@
     <Compile Include="DataFiles\Catalog.cs" />
     <Compile Include="Model\Director.cs" />
     <Compile Include="Model\Builder\IBookBuilder.cs" />
-    <Compile Include="Input.cs" />
+    <None Include="Input.cs" />
     <Compile Include="DataFiles\Magazine.cs" />
     <Compile Include="Model\Builder\MagazineBookBuilder.cs" />
     <Compile Include="DataFiles\Novel.cs" />

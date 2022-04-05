@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public interface ITarget
+namespace AdapterPattern
 {
-    string GetAllPayments();
+    public interface ITarget
+    {
+        string GetAllPayments();
+    }
 }
